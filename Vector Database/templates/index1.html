@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Upload File</title>
+    <style>
+    .header {
+        text-align: center;
+    }
+    
+    .upload-form{
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+    }
+    
+    .inputBtn{
+        background-color: rgb(99 102 241);
+        color: white;
+        font-family: sans-serif;
+        border: none;
+        border-radius: 7px;
+        cursor: pointer;
+        margin-top: 1rem;
+        align-items: center;
+        width: 17%;
+        margin-left: auto;
+        padding: 6px;
+    }
+    </style>
+    </head>
+    <body style="justify-items: center;display: block; text-align: center; background-image: linear-gradient(90deg, #F1F5D3, #F4DDD4 80%, #FEE0B1);">
+        <div style="display: flex; justify-content: space-around; align-items: center; padding: 1em;"> 
+            <div style=" border-radius: 7px; width: 41%; border: 1px solid #4e4d4d; padding: 10px; margin-left: -0.9em;"> 
+                <h1 class="header">Upload Resume</h1>
+                <form class="upload-form" action="{{ url_for('upload') }}" method="POST" enctype="multipart/form-data"> 
+                    <input type="file" name="file" id="upload" multiple > 
+                    <Button type="submit" class="inputBtn" value="Upload" > 
+                        Upload
+                    </Button>
+                </form>
+            </div>
+            <div style="border-radius: 7px; width: 41%; height: 20vh; border: 1px solid #4e4d4d; padding: 10px; margin-right: -0.9em;">
+            <h1 class="header">Upload all Resume to DB</h5>
+            <form class="upload-form" action="{{ url_for('dbupload') }}" method="POST"> 
+            <Button type="submit" clas="upload-form" value="Upload">
+                Upload
+            </Button>
+            </form>
+            </div>
+        </div>
+        <div style="display: flex; justify-content: space-around; align-items: center;"> <div style="border-radius: 7px; width: 40%; border: 1px solid #4e4d4d; padding: 10px;"> 
+            <h1>Query Text</h1>
+            <form action="{{ url_for('process_text') }}" method="POST">
+            <label for="user_input">Enter some text:</label><br> 
+            <input type="text" id="user_input" name="user_input"><br>
+            <!--<input type="submit" value="Submit"> -->
+            <Button type="submit" class="inputBtn" value="Submit" style="background-color: Icadetblue;">
+                Submit
+            </Button>
+            </form>
+        </div>
+        <div style="border-radius: 7px; width: 40%; height: 27vh; border: 1px solid #4e4d4d; padding: 10px;"> 
+            <h1 class="header">Upload Query Resume</h1>
+            <form class="upload-form" action="{{ url_for('queryupload') }}" method="POST" enctype="multipart/form-data"> 
+            <input type="file" name="file" id="upload" >
+                <!-- <input type="submit" value="Upload" > -->
+            <Button type="submit" class="inputBtn" value="Upload" >
+                Upload 
+            </Button>
+            </form>
+        </div>
+    </div>
+    <form action="{{ url_for('deleteFiles') }}" method=post class=delete>
+                Clear Vector index and Upload Resume and Query Resume!
+                <!--<input type=submit value=Delete /> -->
+        <Button type="submit" class="inputBtn" value=Delete style="background-color: red; width: 50px;"> 
+            Delete
+        </Button>
+    </form>
+    <br>
+
+    {% if files %}
+
+    <p>{{ files }}</p>
+
+    {% endif %}
+    <!-- {% if response_text %} <p>{{ response_text }}</p> {% endif %} -->
+
+    </body>
+</body>
+</html>
+

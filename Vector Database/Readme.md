@@ -12,7 +12,7 @@ Start
 -------------
 First download the code from git.
 
-You need to create 2 folder 
+You need to create 2 folder inside the vector database folder
 1.uploads
 2.queryresume
 

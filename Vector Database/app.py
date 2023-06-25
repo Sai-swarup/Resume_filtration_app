@@ -88,7 +88,7 @@ def dbupload():
         id+=1
 
     taken= time.time() - start
-    print("Time taken for upload data to db: {taken:.2f) seconds.") 
+    print("Time taken for upload data to db: {taken:.2f} seconds.") 
     return render_template('index1.html', Files = os.listdir('./uploads'))
 
 @app.route('/process_text', methods=['POST'])
